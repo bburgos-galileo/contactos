@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ContactosWebApp.Models.Contacto>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary btn-sm">Nuevo</a>
+</p>
+<form asp-controller="Home" asp-action="Index">
+    <p>
+        Nombre: <input type="text" name="SearchString" />
+        <input type="submit" value="Filtrar" />
+    </p>
+</form>
+<div class="table-responsive">
+    <table class="table table-sm table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoMovil)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoCasa)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelefonoMovil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelefonoCasa)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdContacto" class="btn btn-warning btn-sm">Editar</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdContacto" class="btn btn-danger btn-sm">Borrar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
